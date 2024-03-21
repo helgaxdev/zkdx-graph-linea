@@ -1,0 +1,7 @@
+type TokenBalance @entity {
+  id: ID!
+  user_address: String!
+  token_address: String!
+  token_symbol: String!
+  token_balance: BigInt!
+}

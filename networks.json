@@ -1,0 +1,12 @@
+{
+  "linea": {
+    "WETH": {
+      "address": "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
+      "startBlock": 758366
+    },
+    "USDC": {
+      "address": "0x176211869cA2b568f2A7D4EE941E073a821EE1ff",
+      "startBlock": 758366
+    }
+  }
+}

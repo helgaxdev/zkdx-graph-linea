@@ -1,5 +1,5 @@
 import {Transfer,} from "../generated/USDC/USDC"
-import {TokenBalance} from "../generated/schema";
+import {DepositShot, TokenBalance, WithdrawShot} from "../generated/schema";
 
 let USDC = "0x176211869ca2b568f2a7d4ee941e073a821ee1ff"
 let matches = [
@@ -38,4 +38,22 @@ export function handleTransfer(event: Transfer): void {
             tokenBalance.token_balance = tokenBalance.token_balance.minus(event.params.value);
     }
     tokenBalance.save();
+
+    if(isIn){
+        let deposit = new DepositShot(event.transaction.hash.toHex())
+        deposit.user_address = user_address;
+        deposit.token_address = USDC;
+        deposit.token_symbol = "USDC";
+        deposit.token_balance = event.params.value;
+        deposit.block_number = event.block.number;
+        deposit.save();
+    } else {
+        let withdraw = new WithdrawShot(event.transaction.hash.toHex())
+        withdraw.user_address = event.transaction.from.toHex();
+        withdraw.token_address = USDC;
+        withdraw.token_symbol = "USDC";
+        withdraw.token_balance = event.params.value;
+        withdraw.block_number = event.block.number;
+        withdraw.save();
+    }
 }

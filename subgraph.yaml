@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f"
       abi: WETH
-      startBlock: 624
+      startBlock: 758366
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

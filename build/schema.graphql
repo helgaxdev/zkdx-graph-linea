@@ -5,3 +5,21 @@ type TokenBalance @entity {
   token_symbol: String!
   token_balance: BigInt!
 }
+
+type DepositShot @entity {
+  id: ID!
+  user_address: String!
+  token_address: String!
+  token_symbol: String!
+  token_balance: BigInt!
+  block_number: BigInt!
+}
+
+type WithdrawShot @entity {
+  id: ID!
+  user_address: String!
+  token_address: String!
+  token_symbol: String!
+  token_balance: BigInt!
+  block_number: BigInt!
+}

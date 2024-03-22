@@ -78,19 +78,6 @@ export class TokenBalance extends Entity {
     this.set("token_address", Value.fromString(value));
   }
 
-  get token_symbol(): string {
-    let value = this.get("token_symbol");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set token_symbol(value: string) {
-    this.set("token_symbol", Value.fromString(value));
-  }
-
   get token_balance(): BigInt {
     let value = this.get("token_balance");
     if (!value || value.kind == ValueKind.NULL) {
@@ -105,7 +92,7 @@ export class TokenBalance extends Entity {
   }
 }
 
-export class DepositShot extends Entity {
+export class TokenBalanceShot extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -113,24 +100,26 @@ export class DepositShot extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save DepositShot entity without an ID");
+    assert(id != null, "Cannot save TokenBalanceShot entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type DepositShot must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type TokenBalanceShot must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set("DepositShot", id.toString(), this);
+      store.set("TokenBalanceShot", id.toString(), this);
     }
   }
 
-  static loadInBlock(id: string): DepositShot | null {
-    return changetype<DepositShot | null>(
-      store.get_in_block("DepositShot", id),
+  static loadInBlock(id: string): TokenBalanceShot | null {
+    return changetype<TokenBalanceShot | null>(
+      store.get_in_block("TokenBalanceShot", id),
     );
   }
 
-  static load(id: string): DepositShot | null {
-    return changetype<DepositShot | null>(store.get("DepositShot", id));
+  static load(id: string): TokenBalanceShot | null {
+    return changetype<TokenBalanceShot | null>(
+      store.get("TokenBalanceShot", id),
+    );
   }
 
   get id(): string {
@@ -170,126 +159,6 @@ export class DepositShot extends Entity {
 
   set token_address(value: string) {
     this.set("token_address", Value.fromString(value));
-  }
-
-  get token_symbol(): string {
-    let value = this.get("token_symbol");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set token_symbol(value: string) {
-    this.set("token_symbol", Value.fromString(value));
-  }
-
-  get token_balance(): BigInt {
-    let value = this.get("token_balance");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set token_balance(value: BigInt) {
-    this.set("token_balance", Value.fromBigInt(value));
-  }
-
-  get block_number(): BigInt {
-    let value = this.get("block_number");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set block_number(value: BigInt) {
-    this.set("block_number", Value.fromBigInt(value));
-  }
-}
-
-export class WithdrawShot extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save WithdrawShot entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.STRING,
-        `Entities of type WithdrawShot must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
-      );
-      store.set("WithdrawShot", id.toString(), this);
-    }
-  }
-
-  static loadInBlock(id: string): WithdrawShot | null {
-    return changetype<WithdrawShot | null>(
-      store.get_in_block("WithdrawShot", id),
-    );
-  }
-
-  static load(id: string): WithdrawShot | null {
-    return changetype<WithdrawShot | null>(store.get("WithdrawShot", id));
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get user_address(): string {
-    let value = this.get("user_address");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set user_address(value: string) {
-    this.set("user_address", Value.fromString(value));
-  }
-
-  get token_address(): string {
-    let value = this.get("token_address");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set token_address(value: string) {
-    this.set("token_address", Value.fromString(value));
-  }
-
-  get token_symbol(): string {
-    let value = this.get("token_symbol");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toString();
-    }
-  }
-
-  set token_symbol(value: string) {
-    this.set("token_symbol", Value.fromString(value));
   }
 
   get token_balance(): BigInt {

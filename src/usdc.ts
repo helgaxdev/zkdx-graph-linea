@@ -44,4 +44,5 @@ export function handleTransfer(event: Transfer): void {
     tokenBalanceShot.token_address = USDC;
     tokenBalanceShot.token_balance = tokenBalance.token_balance;
     tokenBalanceShot.block_number = event.block.number;
+    tokenBalanceShot.save();
 }

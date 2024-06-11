@@ -28,6 +28,7 @@ export function handleDeposit(event: DepositEvent): void {
     tokenBalanceShot.token_address = WETH;
     tokenBalanceShot.token_balance = tokenBalance.token_balance;
     tokenBalanceShot.block_number = event.block.number;
+    tokenBalanceShot.save();
 }
 
 export function handleWithdrawal(event: WithdrawalEvent): void {
@@ -47,4 +48,5 @@ export function handleWithdrawal(event: WithdrawalEvent): void {
     tokenBalanceShot.token_address = WETH;
     tokenBalanceShot.token_balance = tokenBalance.token_balance;
     tokenBalanceShot.block_number = event.block.number;
+    tokenBalanceShot.save();
 }

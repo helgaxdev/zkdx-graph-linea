@@ -12,16 +12,3 @@ type TokenBalanceShot @entity {
   token_balance: BigInt!
   block_number: BigInt!
 }
-
-type Transaction @entity {
-  id: ID!
-  timestamp: BigInt!
-  user_address: String!
-  contract_address: String!
-  token_address: String!
-  decimals: Int!
-  price: Int!
-  quantity: BigInt!
-  tx_hash: String!
-  nonce: BigInt!
-}

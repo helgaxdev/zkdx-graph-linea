@@ -12,3 +12,7 @@ type TokenBalanceShot @entity {
   token_balance: BigInt!
   block_number: BigInt!
 }
+
+type ZUSDHolder @entity {
+  id: ID!
+}

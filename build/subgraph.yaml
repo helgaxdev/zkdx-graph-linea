@@ -47,3 +47,28 @@ dataSources:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: USDC/USDC.wasm
+  - kind: ethereum
+    name: ZUSD
+    network: linea
+    source:
+      address: "0x2167C4D5FE05A1250588F0B8AA83A599e7732eae"
+      abi: ZUSD
+      startBlock: 5904318
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: ZUSD
+          file: ZUSD/abis/ZUSD.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ZUSD/ZUSD.wasm
+features:
+  - grafting
+graft:
+  base: QmQeDcberV9syyf2sme5MWXBWQ8Bf228whMoSB9Nh5CdfY
+  block: 5904318
